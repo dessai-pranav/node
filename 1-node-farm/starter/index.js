@@ -1,4 +1,5 @@
-const fs = require('fs');
+const http = require('http');
+/*const fs = require('fs');
 const textIn = fs.readFileSync('./txt/input.txt', 'utf8')
 console.log(textIn);
 
@@ -18,3 +19,11 @@ fs.writeFile('./txt/final.text',`${data2}\n${data3}`, 'utf8', (err) => {
 
     })
 })
+*/
+ //server
+const server = http.createServer((req, res) => {
+    res.end("Hello World!");
+});
+server.listen(8000,'127.0.0.1',()=>{
+    console.log("Server started!");
+});
