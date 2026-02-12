@@ -1,4 +1,5 @@
 const http = require('http');
+const url = require('url');
 /*const fs = require('fs');
 const textIn = fs.readFileSync('./txt/input.txt', 'utf8')
 console.log(textIn);
@@ -22,7 +23,18 @@ fs.writeFile('./txt/final.text',`${data2}\n${data3}`, 'utf8', (err) => {
 */
  //server
 const server = http.createServer((req, res) => {
-    res.end("Hello World!");
+const pathName = req.url;
+if(pathName === '/overview'){
+    res.end('overview');
+} else if(pathName === '/product'){
+    res.end('product');
+}else {
+    res.writeHead(404,{
+        'Content-type': 'text/html',
+        'my-own-header' : 'hello world'
+    });
+    res.end('<h1>Page not found!</h1>');
+}
 });
 server.listen(8000,'127.0.0.1',()=>{
     console.log("Server started!");
