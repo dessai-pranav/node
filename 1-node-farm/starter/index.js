@@ -1,8 +1,9 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const replaceTemplate = require('./modules/replaceTemplate')/*
-
+const replaceTemplate = require('./modules/replaceTemplate')
+const slugify = require('slugify')
+/*
 const textIn = fs.readFileSync('./txt/input.txt', 'utf8')
 console.log(textIn);
 
@@ -33,6 +34,8 @@ const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`,'ut
 
 
 const dataObj = JSON.parse(data);
+console.log(dataObj);
+console.log(slugify('fresh avocado',{lower:true}));
 const server = http.createServer((req, res) => {
 const pathName = req.url;
 console.log(req.url);
